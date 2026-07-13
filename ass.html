@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ass.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <input type="input note here" value="" class="box1" id="firstInput"><br>
+        <button class="button" onclick="sensorWords() "> click here </button>
+    <br>
+      <i class="fa-solid fa-rotate-right reload "></i> 
+
+    <!-- <div class="pp" id="paragraph"> </div> -->
+    <div class="pp" id="paragraph">
+
+    </div>
+    
+
+</body>
+
+</html>
+<script>
+    let inputTag = document.getElementById("firstInput");
+    let pTag = document.getElementById("paragraph");
+
+    function sensorWords() {
+        let badwords = inputTag.value.trim().toLowerCase()
+
+
+        badwords = badwords.replaceAll("stupid" , "******");
+        badwords = badwords.replaceAll("idiot", "*****");
+        badwords = badwords.replaceAll("mad", "***");
+        badwords = badwords.replaceAll("crazy", "*****");
+
+        pTag.textContent = badwords;
+        pTag.innerHTML= badwords[0].toUppercase()+ badwords.slice()(1 )
+    }
+</script>
