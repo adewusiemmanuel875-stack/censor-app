@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CBT App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>JavaScript CBT</h1>
+
+    <h2 id="question"></h2>
+
+    <div id="options"></div>
+
+    <p id="result"></p>
+
+    <button id="nextBtn">Next</button>
+
+    
+
+</body>
+
+</html>
+<script>
+    let questions = [
+    {
+        question: "What does HTML stand for?",
+        options: [
+            "Hyper Text Markup Language",
+            "High Text Machine Language",
+            "Hyper Tool Markup Language",
+            "Home Text Markup Language"
+        ],
+        answer: "Hyper Text Markup Language"
+    },
+
+    {
+        question: "What does CSS stand for?",
+        options: [
+            "Creative Style Sheet",
+            "Cascading Style Sheets",
+            "Computer Style System",
+            "Colorful Style Sheets"
+        ],
+        answer: "Cascading Style Sheets"
+    },
+
+    {
+        question: "Which language is used to make a webpage interactive?",
+        options: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap"
+        ],
+        answer: "JavaScript"
+    },
+
+    {
+        question: "Which symbol is used for comments in JavaScript?",
+        options: [
+            "//",
+            "##",
+            "<!-- -->",
+            "**"
+        ],
+        answer: "//"
+    },
+
+    {
+        question: "Which keyword creates a variable in JavaScript?",
+        options: [
+            "variable",
+            "let",
+            "create",
+            "varible"
+        ],
+        answer: "let"
+    }
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = "";
+
+let questionElement = document.getElementById("question");
+let optionsElement = document.getElementById("options");
+let nextButton = document.getElementById("nextBtn");
+let resultElement = document.getElementById("result");
+
+
+function showQuestion() {
+
+    let question = questions[currentQuestion];
+
+    questionElement.textContent = question.question;
+
+    optionsElement.innerHTML = "";
+
+    resultElement.textContent = "";
+
+    question.options.forEach(function(option) {
+
+        let button = document.createElement("button");
+
+        button.textContent = option;
+
+        button.onclick = function() {
+
+            selectedAnswer = option;
+
+            let allButtons =
+                document.querySelectorAll("#options button");
+
+            allButtons.forEach(function(btn) {
+                btn.style.backgroundColor = "";
+                btn.style.color = "";
+            });
+
+            button.style.backgroundColor = "blue";
+            button.style.color = "white";
+        };
+
+        optionsElement.appendChild(button);
+
+    });
+}
+
+
+nextButton.onclick = function() {
+
+    if (selectedAnswer === "") {
+
+        alert("Please select an answer");
+
+        return;
+    }
+
+
+    if (selectedAnswer === questions[currentQuestion].answer) {
+
+        score++;
+
+        resultElement.textContent = "✓ Correct!";
+
+    } else {
+
+        resultElement.textContent =
+            "✗ Wrong! Correct answer is: " +
+            questions[currentQuestion].answer;
+    }
+
+
+    currentQuestion++;
+
+    selectedAnswer = "";
+
+
+    if (currentQuestion < questions.length) {
+
+        setTimeout(function() {
+            showQuestion();
+        }, 1000);
+
+    } else {
+
+        setTimeout(function() {
+
+            questionElement.textContent = "Test Completed!";
+
+            optionsElement.innerHTML = "";
+
+            nextButton.style.display = "none";
+
+            resultElement.textContent =
+                "Your score is " + score + " / " + questions.length;
+
+        }, 1000);
+    }
+
+};
+
+
+showQuestion();
+</script>

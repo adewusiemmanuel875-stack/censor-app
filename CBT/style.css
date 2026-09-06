@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+
+/* MAIN CBT CARD */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: #6c63ff;
+    border-radius: 50%;
+    top: -120px;
+    left: -120px;
+    opacity: 0.12;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: #00bfa6;
+    border-radius: 50%;
+    bottom: -120px;
+    right: -100px;
+    opacity: 0.12;
+}
+
+
+/* CBT CONTAINER */
+
+h1,
+h2,
+#options,
+#result,
+#nextBtn {
+    position: relative;
+    z-index: 1;
+}
+
+body {
+    flex-direction: column;
+}
+
+h1 {
+    width: min(750px, 100%);
+    background: #17172b;
+    color: white;
+    padding: 25px 30px;
+    border-radius: 20px 20px 0 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+
+/* QUESTION */
+
+h2 {
+    width: min(750px, 100%);
+    background: white;
+    padding: 35px 30px 20px;
+    color: #17172b;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+
+/* ANSWER AREA */
+
+#options {
+    width: min(750px, 100%);
+    background: white;
+    padding: 10px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* ANSWER BUTTONS */
+
+#options button {
+    width: 100%;
+    padding: 17px 20px;
+    border: 2px solid #e8eaf0;
+    border-radius: 12px;
+    background: #fafbfe;
+    color: #33364d;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+/* HOVER */
+
+#options button:hover {
+    border-color: #6c63ff;
+    background: #f1efff;
+    transform: translateX(5px);
+}
+
+
+/* RESULT */
+
+#result {
+    width: min(750px, 100%);
+    background: white;
+    padding: 5px 30px 20px;
+    min-height: 30px;
+    color: #6c63ff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* NEXT BUTTON */
+
+#nextBtn {
+    width: min(750px, 100%);
+    border: none;
+    padding: 20px;
+    border-radius: 0 0 20px 20px;
+    background: #6c63ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+
+/* NEXT HOVER */
+
+#nextBtn:hover {
+    background: #554de0;
+}
+
+
+/* NEXT CLICK */
+
+#nextBtn:active {
+    transform: scale(0.98);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 21px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 19px;
+        padding: 25px 20px 15px;
+    }
+
+    #options {
+        padding: 10px 20px 25px;
+    }
+
+    #options button {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    #result {
+        padding: 5px 20px 20px;
+    }
+
+    #nextBtn {
+        padding: 17px;
+    }
+}
